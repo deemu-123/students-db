@@ -1,0 +1,40 @@
+const { MongoClient } = require("mongodb");
+
+const client = new MongoClient("mongodb://localhost:27017");
+
+async function main() {
+  try {
+    await client.connect();
+    console.log("Connected to MongoDB!");
+
+    const db = client.db("studentDB");
+    const students = db.collection("students");
+
+    // Student schema and sample data
+    const data = [
+      {
+        studentId: 101,
+        name: "Anita",
+        department: "CSE",
+        subjects: [
+          { subject: "DBMS", marks: 85, grade: "A" },
+          { subject: "AI", marks: 90, grade: "A+" },
+          { subject: "Web Development", marks: 78, grade: "B+" }
+        ]
+      },
+      {
+        studentId: 102,
+        name: "Rahul",
+        department: "CSE",
+        subjects: [
+          { subject: "DBMS", marks: 75, grade: "B+" },
+          { subject: "AI", marks: 82, grade: "A" },
+          { subject: "Web Development", marks: 88, grade: "A" }
+        ]
+      },
+      {
+        studentId: 103,
+        name: "Priya",
+        department: "AIML",
+        subjects: [
+          { subject: "DBMS", marks: 92,
